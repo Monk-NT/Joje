@@ -1,0 +1,31 @@
+name:		Joje
+version:	0.0.1
+synopsis:	CMS/blog engine
+homepage:	https://github.com/Monk-NT/Joje
+licence:	apache 2.0
+author:		Veljko Srdarevic
+maintainer:	monk.nt@gmail.com
+category:	Web
+build-type:	Simple
+cabal-verion:	>=1.8
+
+executable todo:
+	main-is:	Main.hs
+	-- other-modules:
+	build-depends:	base ==4.6.*
+		      ,	wai
+		      ,	warp
+		      ,	http-types
+		      , resourcet
+		      , scotty
+		      , text
+		      , bytestring
+		      , blaze-html
+		      , persistent ==2.1.*
+		      , persistent-template ==2.1.*
+		      , persistent-postgresql ==2.1.*
+		      , monad-logger = 0.3.*
+		      , transformers
+		      , wai-middleware-static
+		      , wai-extra
+		      ,time

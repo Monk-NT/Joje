@@ -2,6 +2,6 @@ language: haskell
 install:
  - cabal install --only-dependencies
 script:
- - cabal configure --ghc-options=-Werror && cabal build
+ - cabal configure && cabal build
 notifications:
   email: true

@@ -1,7 +1,9 @@
 language: haskell
 install:
  - cabal install --only-dependencies
+ - cabal install hlint
 script:
+ - hlint src
  - cabal configure && cabal build
 notifications:
   email: true

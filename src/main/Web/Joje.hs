@@ -5,18 +5,26 @@ module Web.Joje
     joje
   ) where
 
-import Network.Wai (responseLBS, Application)
+import Network.Wai (responseLBS, Application, Response, rawPathInfo, Request)
 import Network.Wai.Handler.Warp
 import Network.HTTP.Types
 import Network.HTTP.Types.Header
+import Web.Joje.Route
+import Data.ByteString (ByteString)
 
-joje :: Port -> IO ()
-joje p = do
+joje :: Port -> RouteData -> IO ()
+joje p routes = do
   putStrLn $ "Listening on port " ++ show p
-  run p jojeApp
+  run p (jojeApp routes)
 
 
-jojeApp :: Application
-jojeApp req f =
-  f $ responseLBS status200 [(hContentType, "text/plain")] "Hello world!"
+
+jojeApp :: RouteData -> Application
+jojeApp routes req f =
+  f $ singleRoute (rawPathInfo req) routes req
+
+singleRoute :: ByteString -> RouteData -> (Request -> Response)
+singleRoute route rData 
+  | route == path rData = handler rData
+  | otherwise = error ("No route" ++ show route)
 

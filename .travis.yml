@@ -1,9 +1,10 @@
 language: haskell
 install:
  - cabal install --only-dependencies
- - cabal install hlint
+ - sudo apt-get -q -y install hlint || cabal install hlint
 script:
  - hlint src
  - cabal configure && cabal build
 notifications:
   email: true
+sudo: required

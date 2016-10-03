@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+-- |This is a simple demo app, used for testing of Joje during development
 
 import Web.Joje (joje)
 import Web.Joje.Route
@@ -10,5 +11,7 @@ main :: IO ()
 main = joje 3000 [ RouteData "/joje" Nothing demoRoute
                  , RouteData "/snd" Nothing demoRoute ]
 
+-- |'demoRoute' is a simple route used for demo. It returns its path in 
+-- response body
 demoRoute :: Request -> Response
 demoRoute req = responseLBS status200 [] $ LBS.fromStrict (rawPathInfo req)

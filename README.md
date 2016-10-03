@@ -8,3 +8,4 @@ This todo is to be expanded as development progresses. Current entries are:
 
   * Allowing verbs for different routes
   * Tests
+  * Comment code

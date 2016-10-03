@@ -16,7 +16,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 executable Joje
-  ghc-options:	       -Wall
+  ghc-options:	       -Wall -Werror
   main-is:             Main.hs
   -- other-modules:       
   other-extensions:    OverloadedStrings

@@ -9,3 +9,10 @@ This todo is to be expanded as development progresses. Current entries are:
   * Allowing verbs for different routes
   * Tests
   * Comment code
+  * Route parser
+
+
+##Roadmap
+0.1.0 - Working router
+Working router is defined as can parse route, get parameters and send
+it to adequate handler function

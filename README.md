@@ -13,6 +13,8 @@ This todo is to be expanded as development progresses. Current entries are:
 
 
 ##Roadmap
-0.1.0 - Working router
-Working router is defined as can parse route, get parameters and send
-it to adequate handler function
+###0.1.0
+  * Working router - can parse route, get parameters and send
+  it to adequate handler function
+  * Change to Library
+  * Add basic tests

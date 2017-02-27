@@ -8,8 +8,7 @@ import           Web.Joje             (joje)
 import           Web.Joje.Router
 
 routes :: [Route]
-routes = [ Route "/joje" [Methods.GET] demoRoute
-                 , Route "/snd" [Methods.GET] demoRoute ]
+routes = [ Route "/joje" [Methods.GET] demoRoute]
 
 main :: IO ()
 main = joje 3000 routes

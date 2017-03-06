@@ -3,6 +3,13 @@
 Joje is a simple Haskell web framework. It's main purpose is to be a light wrapper
 around WAI/Warp.
 
+## How to run
+
+For basic example, use
+```bash
+stack runghc examples\Basic.hs
+```
+
 ##TODO
 This todo is to be expanded as development progresses. Current entries are:
 

@@ -8,12 +8,13 @@ import           Web.Joje             (joje)
 import           Web.Joje.Router
 
 routes :: [Route]
-routes = [ Route "/joje" [Methods.GET] demoRoute]
+routes = [get "/joje" demoRoute
+         ,get "/joje/is" demoRoute]
 
 main :: IO ()
 main = joje 3000 routes
 
 -- |'demoRoute' is a simple route used for demo. It returns its path in
 -- response body
-demoRoute :: Request -> Response
-demoRoute req = responseLBS Methods.status200 [] $ LBS.fromStrict (rawPathInfo req)
+demoRoute :: RouteHandler
+demoRoute  _ req  = responseLBS Methods.status200 [] $ LBS.fromStrict (rawPathInfo req)

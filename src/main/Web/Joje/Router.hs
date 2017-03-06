@@ -9,17 +9,22 @@ module Web.Joje.Router
 (
   Route(..),
   RouteTree,
+  RouteHandler,
   buildRouteTree,
-  getHandlerForRoute
+  getHandlerForRoute,
+  get,
+  Param
+
 )
 where
 
 import           Data.ByteString          (ByteString, append)
 import qualified Data.ByteString.Char8    as Char8
 import qualified Data.Trie                as Trie
-import           Network.Wai
 import           Web.Joje.DefaultHandlers
 import           Web.Joje.Router.Data
+import Web.Joje.Router.RouteConstructs
+
 
 addEndSlash :: ByteString -> ByteString
 addEndSlash route = if Char8.last route == '/'
@@ -27,10 +32,8 @@ addEndSlash route = if Char8.last route == '/'
   else append route "/"
 
 buildRouteTree :: [Route] -> RouteTree
-buildRouteTree  =  Trie.fromList . map (\x-> (addEndSlash $ root x,x))
+buildRouteTree  =  Trie.fromList . map (\x-> (addEndSlash $ fullRoute x,x))
 
-getHandlerForRoute :: ByteString -> RouteTree -> Request -> Response
+getHandlerForRoute :: ByteString -> RouteTree -> RouteHandler
 getHandlerForRoute route rt =
-  case fmap handler (Trie.lookup (addEndSlash route) rt) of
-    Just x  -> x
-    Nothing -> noRouteFound
+  maybe noRouteFound handler (Trie.lookup (addEndSlash route) rt)

@@ -7,10 +7,11 @@ around WAI/Warp.
 
 For basic example, use
 ```bash
-stack runghc examples\Basic.hs
+  stack runghc examples\Basic.hs
 ```
 
 ##TODO
+
 This todo is to be expanded as development progresses. Current entries are:
 
   * Allowing verbs for different routes
@@ -20,7 +21,9 @@ This todo is to be expanded as development progresses. Current entries are:
 
 
 ##Roadmap
+
 ###0.1.0
+
   * Working router - can parse route, get parameters and send
   it to adequate handler function
   * Change to Library

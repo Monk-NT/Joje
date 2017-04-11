@@ -21,6 +21,7 @@ Library
   other-modules:       Web.Joje.DefaultHandlers
                        Web.Joje.Router.Data
                        Web.Joje.Router.RouteConstructs
+                       Web.Joje.Data
   ghc-options:	       -Wall -Werror
   other-extensions:    OverloadedStrings
   build-depends:       base      >= 4.3.1 && <5,

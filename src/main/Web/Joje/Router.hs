@@ -23,6 +23,7 @@ import qualified Data.ByteString.Char8    as Char8
 import qualified Data.Trie                as Trie
 import           Web.Joje.DefaultHandlers
 import           Web.Joje.Router.Data
+import           Web.Joje.Data
 import Web.Joje.Router.RouteConstructs
 
 

@@ -2,21 +2,20 @@ module Web.Joje.Router.Data
 (
   Route (..),
   RouteTree,
-  RouteHandler,
-  Param
+  RouteHandler
 )where
 
 
 import           Data.ByteString    (ByteString)
 import           Data.Trie
 import           Network.HTTP.Types
-import           Network.Wai
+import           Web.Joje.Data
 
 -- |This type represents the route. It is used by router to
 -- route and call correct route handlers. Handlers are simple
 -- Request -> Response functions.
 data Route = Route { fullRoute :: ByteString
-                   , verb      :: [StdMethod]
+                   , method    :: StdMethod
                    , handler   :: RouteHandler
                    }
 
@@ -25,6 +24,4 @@ instance Show Route where
 
 type RouteTree = Trie Route
 
-type RouteHandler = Param -> Request -> Response
-
-type Param = ByteString
+type RouteHandler = (JojeState -> JojeState)

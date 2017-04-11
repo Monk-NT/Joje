@@ -27,4 +27,4 @@ put :: ByteString -> RouteHandler -> Route
 put = buildRoute Methods.PUT
 
 buildRoute :: Methods.StdMethod -> ByteString -> RouteHandler -> Route
-buildRoute method path = Route path [method]
+buildRoute httpMethod path = Route path httpMethod

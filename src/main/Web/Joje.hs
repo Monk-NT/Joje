@@ -26,7 +26,7 @@ jojeApp :: RouteTree -> Application
 jojeApp routes request f = f $ resp (getHandlerForRoute (rawPathInfo request) routes (mkJojeState request))
 
 mkJojeState :: Request -> JojeState
-mkJojeState request = JojeState { req = mkJojeReq request
+mkJojeState request = JojeState { req  = mkJojeReq request
                                 , resp = responseFile
                                           status404
                                           [("Content-Type", "text/html")]

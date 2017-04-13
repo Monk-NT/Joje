@@ -7,7 +7,7 @@ around WAI/Warp.
 
 For basic example, use
 ```bash
-  stack runghc examples\Basic.hs
+  stack runghc examples/Basic.hs
 ```
 
 ## TODO

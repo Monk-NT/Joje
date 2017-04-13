@@ -7,9 +7,9 @@ delete,
 put
 )where
 
-import Data.ByteString
-import Web.Joje.Router.Data
-import  qualified Network.HTTP.Types  as Methods (StdMethod(GET,POST,PATCH,DELETE,PUT))
+import           Data.ByteString
+import qualified Network.HTTP.Types   as Methods (StdMethod (DELETE, GET, PATCH, POST, PUT))
+import           Web.Joje.Router.Data
 
 get :: ByteString -> RouteHandler -> Route
 get = buildRoute Methods.GET

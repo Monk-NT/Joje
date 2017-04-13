@@ -18,13 +18,13 @@ module Web.Joje.Router
 )
 where
 
-import           Data.ByteString          (ByteString, append)
-import qualified Data.ByteString.Char8    as Char8
-import qualified Data.Trie                as Trie
+import           Data.ByteString                 (ByteString, append)
+import qualified Data.ByteString.Char8           as Char8
+import qualified Data.Trie                       as Trie
+import           Web.Joje.Data
 import           Web.Joje.DefaultHandlers
 import           Web.Joje.Router.Data
-import           Web.Joje.Data
-import Web.Joje.Router.RouteConstructs
+import           Web.Joje.Router.RouteConstructs
 
 
 addEndSlash :: ByteString -> ByteString

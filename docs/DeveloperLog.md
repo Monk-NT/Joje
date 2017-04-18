@@ -18,7 +18,7 @@ where `:var` represents an ID/variable.
 
 After that, we should probably go to something like
 
-```
+```Haskell
     /route1/:var/some_other_route
 ```
 
@@ -40,6 +40,9 @@ we should change both `":details"` and `":singleJoje"` to the same expression, e
 
 So, current plan is:
 
-* Add logic to extract each `"":expression"`  and change it to `":var"`
+* Add logic to extract each `":expression"`  and change it to `":var"`
 * Add logic that _gets_ what is an ID, and what is a regular path. Somehow, I think using the `Data.Trie` and not
 implementing my own will not be good enough.
+
+## 2017-04-18
+Today I add a new function for preparing routes as described above.

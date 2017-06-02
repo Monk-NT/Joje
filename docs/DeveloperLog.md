@@ -46,3 +46,11 @@ implementing my own will not be good enough.
 
 ## 2017-04-18
 Today I add a new function for preparing routes as described above.
+
+## 2017-04-19
+Continuing where I stopped yesterday. Today is adding logic that replaces `ID` with `":var"`. Current plan is to:
+
+ * Check biggest match on `Data.Trie`;
+ * If it is a full match, continue with that route.
+ * If it is not a full match, replace the part after full match and before `/` with `":var"`.
+ * Continue until last `/` is reached.

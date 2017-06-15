@@ -17,8 +17,8 @@ extra-source-files:
 
 Library
   exposed-modules:     Web.Joje
-                       Web.Joje.Router
-  other-modules:       Web.Joje.DefaultHandlers
+  other-modules:       Web.Joje.Router
+                       Web.Joje.DefaultHandlers
                        Web.Joje.Router.Data
                        Web.Joje.Router.RouteConstructs
                        Web.Joje.Data

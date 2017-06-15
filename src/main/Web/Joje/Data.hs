@@ -15,9 +15,10 @@ import           Network.Wai
 
 type Param = ByteString
 
-data JojeReq = JojeReq { param  :: Param
-                       , path   :: ByteString
-                       , method :: Method
+data JojeReq = JojeReq { query    :: Param
+                       , path     :: ByteString
+                       , method   :: Method
+                       , pathParam :: ByteString
                        }
 
 data JojeResp = JojeResp { respBody    :: ByteString
@@ -30,7 +31,8 @@ data JojeState = JojeState { req  :: JojeReq
                            }
 
 mkJojeReq :: Request -> JojeReq
-mkJojeReq request = JojeReq { param = rawQueryString request
+mkJojeReq request = JojeReq { query = rawQueryString request
                             , path = rawPathInfo request
                             , method = requestMethod request
+                            , pathParam = empty
                             }

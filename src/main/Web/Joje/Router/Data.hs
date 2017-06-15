@@ -14,9 +14,9 @@ import           Web.Joje.Data
 -- |This type represents the route. It is used by router to
 -- route and call correct route handlers. Handlers are simple
 -- Request -> Response functions.
-data Route = Route { fullRoute :: ByteString
-                   , method    :: StdMethod
-                   , handler   :: RouteHandler
+data Route = Route { fullRoute   :: ByteString
+                   , routeMethod :: StdMethod
+                   , handler     :: RouteHandler
                    }
 
 instance Show Route where

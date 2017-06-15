@@ -3,7 +3,20 @@
 module Web.Joje
   (
     joje,
-    get
+    Route(..),
+    RouteTree,
+    RouteHandler,
+    buildRouteTree,
+    getHandlerForRoute,
+    get,
+    put,
+    patch,
+    post,
+    delete,
+    Param,
+    JojeState(..),
+    JojeReq(..),
+    findLongestRoute,
   ) where
 
 import           Network.Wai

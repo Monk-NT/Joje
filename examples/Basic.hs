@@ -9,7 +9,8 @@ import           Web.Joje
 routes :: [Route]
 routes = [ get "/joje"              demoRoute
          , get "/joje/:element"     demoRoute
-         , get "/joje/:element/handler" demoRoute ]
+         , get "/joje/:element/handler" demoRoute
+         , get "/joje/:var/handler/:internal" demoRoute ]
 
 main :: IO ()
 main = joje 3000 routes

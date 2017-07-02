@@ -15,8 +15,7 @@ module Web.Joje
     delete,
     Param,
     JojeState(..),
-    JojeReq(..),
-    findLongestRoute,
+    JojeReq(..)
   ) where
 
 import           Network.Wai

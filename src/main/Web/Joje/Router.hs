@@ -19,20 +19,19 @@ module Web.Joje.Router
   delete,
   Param,
   JojeState(..),
-  JojeReq(..),
-  findLongestRoute
+  JojeReq(..)
 )
 where
 
-import Data.ByteString (ByteString)
-import qualified          Data.ByteString   as BS              (append, concat, empty)
+import           Data.ByteString                 (ByteString)
+import qualified Data.ByteString                 as BS (append, concat)
 import qualified Data.ByteString.Char8           as Char8
 import qualified Data.Trie                       as Trie
-import           Text.Regex
 import           Web.Joje.Data
 import           Web.Joje.DefaultHandlers
 import           Web.Joje.Router.Data
 import           Web.Joje.Router.RouteConstructs
+
 
 
 
@@ -46,23 +45,36 @@ buildRouteTree  =  Trie.fromList . map (\x-> (addEndSlash $ fullRoute $ prepareR
 
 getHandlerForRoute :: ByteString -> RouteTree -> RouteHandler
 getHandlerForRoute route rt =
-  maybe noRouteFound handler (Trie.lookup (addEndSlash route) rt)
+  maybe noRouteFound handler (Trie.lookup (addEndSlash $ findLongestRoute rt route) rt)
 
 prepareRoute :: Route -> Route
 prepareRoute route = route {fullRoute = replaceRouteExp $ fullRoute route}
 
 replaceRouteExp :: ByteString -> ByteString
-replaceRouteExp fRoute = Char8.pack $ subRegex (mkRegex ":([a-zA-Z0-9]*)/?") (Char8.unpack fRoute) ":var/"
+replaceRouteExp fRoute = BS.concat $ map ((`BS.append` "/") . createVarExpression) splitRoute
+  where splitRoute = Char8.split '/' fRoute
 
-getParamAndRoute :: ByteString -> (ByteString, ByteString)
-getParamAndRoute route = ("findLongestRoute route", "param")
+-- @ This function creates the "var" expression
+createVarExpression :: ByteString -> ByteString
+createVarExpression "" = ""
+createVarExpression routePart = if Char8.head routePart == ':'
+  then ":var"
+  else routePart
 
 findLongestRoute :: RouteTree -> ByteString -> ByteString
-findLongestRoute rt route = getNext (Trie.match rt route) rt
+findLongestRoute rt route = getNext (Trie.match rt $ addEndSlash route) rt
 
-getNext :: Maybe (ByteString, Route, ByteString) -> RouteTree -> ByteString
+getNext :: Maybe(ByteString, Route, ByteString) -> RouteTree -> ByteString
 getNext (Just (currentRoute, _, "")) _ = currentRoute
 getNext (Just (currentRoute, _, rest)) rt =
-  findLongestRoute rt (BS.append currentRoute (Char8.pack $ subRegex (mkRegex "(.*)/") (Char8.unpack rest) ":var/"))
-getNext Nothing _ = BS.empty
--- Function above does not complete
+  findLongestRoute rt (BS.append currentRoute $ BS.concat $ map (`appendOnNonEmpty` "/") $ addVar rest)
+getNext Nothing _ = "BS.empty"
+
+addVar :: ByteString -> [ByteString]
+addVar str = if Char8.elem '/' str && str /= ":var/"
+  then ":var" : tail (Char8.split '/' str)
+  else []
+
+appendOnNonEmpty :: ByteString -> ByteString -> ByteString
+appendOnNonEmpty "" _      = ""
+appendOnNonEmpty str1 str2 = BS.append str1 str2

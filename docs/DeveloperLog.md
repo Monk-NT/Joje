@@ -54,3 +54,23 @@ Continuing where I stopped yesterday. Today is adding logic that replaces `ID` w
  * If it is a full match, continue with that route.
  * If it is not a full match, replace the part after full match and before `/` with `":var"`.
  * Continue until last `/` is reached.
+
+## 2017-06-30
+Finally continue working on this. Changed regex lib from `regex-compat` with `regex-pcre-builtin` since compat is POSIX
+compliant and that is not working for me. Now I have to rewrite the entire regex part.
+
+I should maybe try removing regexes completely...
+
+### Update 1
+Ok. I actually don't need regex, at least for path search. I can just split the string by `'/'` and then replace the
+first string with `":var/"` and just continue. Why did I think using regexes was a good idea in the first place
+I don't understand.
+
+Also, for path creation, I can skip the regex, I think, using something similar to the idea I just described for path
+search.
+
+I think this will be my most rewritten project. I _'pivoted'_ it so many times...
+
+## 2017-07-02
+Ok. Non-regex solution works better but still kinda craps itself if some _corner cases_ are applied. Non the matter,
+will fix that later.

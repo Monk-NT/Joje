@@ -7,7 +7,6 @@ module Web.Joje
     RouteTree,
     RouteHandler,
     buildRouteTree,
-    getHandlerForRoute,
     get,
     put,
     patch,

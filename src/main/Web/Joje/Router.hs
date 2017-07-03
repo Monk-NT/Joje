@@ -19,7 +19,8 @@ module Web.Joje.Router
   delete,
   Param,
   JojeState(..),
-  JojeReq(..)
+  JojeReq(..),
+  findLongestRoute
 )
 where
 

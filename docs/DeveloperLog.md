@@ -74,3 +74,22 @@ I think this will be my most rewritten project. I _'pivoted'_ it so many times..
 ## 2017-07-02
 Ok. Non-regex solution works better but still kinda craps itself if some _corner cases_ are applied. Non the matter,
 will fix that later.
+
+## 2017-07-03
+Adding tests. First, I have to choose what will I use. As far as I understand, I can choose between QuickCheck, HUnit
+and HSpec. It seems that HUnit and HSpec are related, HSpec being built on top of HUnit. So, then the real difference is
+between verbosity of one and other, and between QuickCheck approach versus other two. QuickCheck is a _'library for
+random testing of program properties'_ to quote official documentation. That means that you _describe_ what the function
+does and then QuickCheck uses random input data to test it. It is an interesting approach, but alas, I will not use it,
+at least not for now.
+
+Furthermore, HSpec can use QuickCheck, or at least parts of it, meaning that HSpec is probably best from both worlds. So,
+it's decided, I'll use Hspec. Now, only thing I have to do is create the Spec.hs file...
+
+### Update 1
+So I added my simple first `Spec.hs` (actually, filename is `JojeSpec.hs`, but who cares). This simple script tests
+`findLongestRoute` function for now. Should redo the test, so it doesn't expose the internal workings of the library.
+Don't know what to think about the whole `Web.Joje.Internal` module I exposed. I see some of the bigger and better libraries
+doing it, but somehow, that seems wrong to me. Library API should do what library API says it does, no need for Internal
+workings to be shown. Then again... I don't know, maybe some parts should be exposed. Maybe some "goodness" is hidden
+in internal workings. I'll try to grok it to its fullness.

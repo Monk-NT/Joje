@@ -93,3 +93,6 @@ Don't know what to think about the whole `Web.Joje.Internal` module I exposed. I
 doing it, but somehow, that seems wrong to me. Library API should do what library API says it does, no need for Internal
 workings to be shown. Then again... I don't know, maybe some parts should be exposed. Maybe some "goodness" is hidden
 in internal workings. I'll try to grok it to its fullness.
+
+## 2017-07-04
+Never ever let atom rename a file. Git gets... confused.

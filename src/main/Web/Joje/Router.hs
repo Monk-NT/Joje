@@ -33,9 +33,6 @@ import           Web.Joje.DefaultHandlers
 import           Web.Joje.Router.Data
 import           Web.Joje.Router.RouteConstructs
 
-
-
-
 addEndSlash :: ByteString -> ByteString
 addEndSlash route = if Char8.last route == '/'
   then route

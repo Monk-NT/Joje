@@ -96,3 +96,16 @@ in internal workings. I'll try to grok it to its fullness.
 
 ## 2017-07-04
 Never ever let atom rename a file. Git gets... confused.
+
+## 2017-10-12
+I think I'm going about this the wrong way.  Or maybe too much time has passed and I can't remember. I don't think I need this:
+
+```Haskell
+  findLongestRoute rt "/joje/123/handler/" `shouldBe` ("/joje/:var/handler/" :: ByteString)
+  findLongestRoute rt "/joje/123/handler/123/" `shouldBe` ("/joje/:var/handler/:var/" :: ByteString)
+```
+
+I think that is a completely wrong way of looking at things. I just complicated my life.
+
+###Update 1
+I think I need some time to grok this.

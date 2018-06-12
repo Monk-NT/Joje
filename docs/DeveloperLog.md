@@ -109,3 +109,7 @@ I think that is a completely wrong way of looking at things. I just complicated 
 
 ###Update 1
 I think I need some time to grok this.
+
+##2017-11-15
+Something tells me that a new full rewrite is coming soon. Was watching servant. I like some ideas in it. I also like
+some ideas in scotty. I should combine them :).
